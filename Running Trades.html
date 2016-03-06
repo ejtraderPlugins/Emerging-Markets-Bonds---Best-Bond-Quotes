@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8">
+
+		<!-- <link rel="stylesheet" href="eikon.css" type="text/css" />  -->
+		<!-- <link rel="stylesheet" href="nanoscroller.css">  -->
+		<!--<script type="text/javascript" src="jquery.nanoscroller.min.js"></script>-->
+
+		<link rel="stylesheet" href="table.css" type="text/css" />
+		<link rel="stylesheet" href="shared.css" type="text/css" />
+		<script type="text/javascript" src="jquery-1.7.js"></script>
+		
+
+		<style type="text/css">
+			#runningTradesTable tbody tr td
+			{
+				text-align: center;
+			}
+			#runningTradesTable thead tr th
+			{
+				color: #FFFFFF;
+			}
+/*			#poptsnano
+			{
+				border: 3px solid green;
+				width: 383px;
+				height: 268px;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="application">
+			<div class="component-container">
+				<div class="component-container-label">
+					RUNNING TRADES	
+				</div>
+				<div class="component-container-label-border"></div>
+				<!-- <div id="MDPlaceholder"></div> -->
+				<!-- <span id="fixedheader"></span> -->
+				<div id="poptsnano" class="nano">
+					<div id="poptstableholder" class="content">
+						<table id="runningTradesTable" class="quotes">
+							<thead>
+								<tr>
+									<th>Time</th>
+									<th>Ticker</th>
+									<th>C</th>
+									<th>Px</th>
+									<th>Size</th>
+									<th>Dir.</th>
+								</tr>
+							</thead>
+							<col width=30>
+							<col width=30>
+							<col width=20>
+							<col width=60>
+							<col width=50>
+							<col width=30>
+							<tbody>
+								<tr></tr>
+							</tbody>
+						</table>
+					</div>
+				</div> 
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+		 // 	var test = new Object();
+		 // 	_hookBookPopup(test);
+
+			
+			// _tradeUpdatePopup("STAN1","px","sz","brk","tim","dir","1");
+			// _tradeUpdatePopup("STAN2","px","sz","brk","tim","dir","2");
+			// _tradeUpdatePopup("STAN3","px","sz","brk","tim","dir","3");
+			// _tradeUpdatePopup("STAN4","px","sz","brk","tim","dir","4");
+			// _tradeUpdatePopup("STAN5","px","sz","brk","tim","dir","5");
+
+
+			// _removeTrade("3");
+
+
+
+			// ------------------------------- Initialise Start ----------------------------------------
+
+			var refBook;
+			var refPricer;
+			var cache;
+			var popupBondID;
+			var symbolName;
+			var resetTable;
+			function _hookBookPopup (myBookRef) 
+			{
+				
+				refBook = myBookRef; 
+				cache 	= new Object();
+				//resetNanoWindowSize();
+
+				var viewportWidth = $(window).width()-16;
+				var viewportHeight = $(window).height() -60;
+				// alert( viewportWidth + " " + viewportHeight);
+				$("#poptsnano").css(
+				{
+					width:viewportWidth,
+					height:viewportHeight
+				});
+
+				$("#application .nano").nanoScroller();
+				resetTable = true;
+				//document.getElementById("popuplabel").innerHTML = symbolName;
+			}
+
+			// ------------------------------- Initialise End ----------------------------------------
+
+
+			// -------------------------- API Definition START ------------------------------------
+			document.tradeUpdatePopup = _tradeUpdatePopup;
+			document.hookBookPopup 	  = _hookBookPopup;
+			document.removeTrade 	  = _removeTrade;
+			// -------------------------- API Definition END --------------------------------------
+
+
+
+			// ----------------- Event Handler Start ---------------------------------
+
+
+			// ------------------------------- Event Handler End -----------------------------------------------
+
+
+
+
+			function _tradeUpdatePopup(symbol,px,sz,brk,tim,dir,id)
+			{
+				var rowTemplate = [];
+				var k 			= 0;
+				rowTemplate[k++] = '<tr id="#id" class="#oddEven">';					//[0]
+				rowTemplate[k++] = '<td class="name">#bbqName</td>';					//[1]
+				rowTemplate[k++] = '<td class="time">#time</td>';						//[2]
+				rowTemplate[k++] = '<td class="brokers">#brk</td>';						//[3]
+				rowTemplate[k++] = '<td class="px">#px</td>';							//[4]
+				rowTemplate[k++] = '<td class="size">#sz</td>';							//[5]
+				rowTemplate[k++] = '<td class="hittake">#dir</td></tr>';				//[6]
+
+				
+				var $firstRow = $("#runningTradesTable tbody tr:first");
+				if ($firstRow[0].className == "even")
+					rowTemplate[0] = rowTemplate[0].replace('#oddEven',"odd");
+				else
+					rowTemplate[0] = rowTemplate[0].replace('#oddEven',"even");	
+
+				rowTemplate[0] = rowTemplate[0].replace('#id',id);	
+				
+				rowTemplate[1] = rowTemplate[1].replace('#bbqName',symbol);
+
+				rowTemplate[2] = rowTemplate[2].replace('#time',tim);
+				rowTemplate[3] = rowTemplate[3].replace('#brk',brk);
+				rowTemplate[4] = rowTemplate[4].replace('#px',px);
+				rowTemplate[5] = rowTemplate[5].replace('#sz',sz);
+				rowTemplate[6] = rowTemplate[6].replace('#dir',dir);
+
+				rowTemplate = rowTemplate.join("");
+				$firstRow.before(rowTemplate);
+
+				$("#application .nano").nanoScroller();
+
+			}
+
+			function _removeTrade(id)
+			{
+				$("#"+id).remove();
+				if (resetTable == true)  
+				{//only reset the row colors every 10 seconds (approx.)
+					resetTable = false;
+					tableReset();		
+				}
+			}
+
+			function tableReset()
+			{// SYNOPSYS- resetting row colours in every call is too expensive. This function is called everytime resetTable is true, and will reset the 
+			 // 		  row colours 10 seconds later. Note that rowcolour reset is only triggered by a newinstrument insertion
+				window.setTimeout(function(){resetOddEvenColour("runningTradesTable");resetTable = true;},10000);	
+			}
+
+			function resetOddEvenColour(sector)
+			{
+				var table   	 = document.getElementById(sector);		
+				var length  	 = table.rows.length;
+				var evenOrOddRow = "";
+
+
+				for(var i=0;i<length;i++)
+				{
+					var remainder    = i%2;
+					
+					if(remainder == 0)
+						evenOrOddRow = "odd";
+					else
+						evenOrOddRow = "even";
+
+					table.rows[i].className = evenOrOddRow;
+				}
+
+			}
+
+			// -------------------------- NanoScroller START ----------------------------------------------
+			(function($,sr){
+			  var debounce = function (func, threshold, execAsap) {
+			      var timeout;
+			 
+			      return function debounced () {
+			          var obj = this, args = arguments;
+			          function delayed () {
+			              if (!execAsap)
+			                  func.apply(obj, args);
+			              timeout = null; 
+			          };
+			 
+			          if (timeout)
+			              clearTimeout(timeout);
+			          else if (execAsap)
+			              func.apply(obj, args);
+			 
+			          timeout = setTimeout(delayed, threshold || 100); 
+			      };
+			  }
+					
+				jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+				 
+			})(jQuery,'smartresize');
+
+			$(window).smartresize(function()
+			{
+				resetNanoWindowSize()
+			});
+
+			function resetNanoWindowSize()
+			{
+				var viewportWidth = $(window).width()-16;
+				var viewportHeight = $(window).height() -60;
+
+				//alert(viewportWidth + " " + viewportHeight)
+
+				$("#application").find(".nano").css(
+				{
+					width:viewportWidth,
+					height:viewportHeight
+				});
+				
+
+				// $("#application .content").css(
+				// {
+				//  	width:viewportWidth+20,
+				//   	height:viewportHeight+140
+				// })
+				
+				$("#application .nano").nanoScroller();
+				
+			}
+			// -------------------------- NanoScroller END ----------------------------------------------
+
+		</script>
+
+	</body>
+</html>

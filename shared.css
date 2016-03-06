@@ -1,0 +1,99 @@
+
+@import url(http://fonts.googleapis.com/css?family=Cabin:700,bold);
+
+html { overflow: hidden;}
+body
+{	
+	font-family:Cabin,Helvetica,Arial;
+	margin: 8px 5px 8px 5px; padding: 0px;
+	background-color: #181818;
+}
+
+/* ------------------- EIKON.CSS START -------------------------*/
+/* --- APPLICATION CONTAINER ---*/
+#application
+{	
+	width: 100%;
+	/*background-color: #181818;*/
+	border: 1px solid #363636;
+	margin: 4px 0px 4px 0px;
+}
+
+/* --- COMPONENT CONTAINER ---*/
+
+#application div.component-container
+{
+	border: 2px solid #000000;
+	background-color: #242424;
+	padding: 1px 1px 1px 1px;
+	margin: 0px;
+}
+#application div.component-container-label
+{
+	font-size: 16px; color: #c8c7c7;
+	line-height:30px;
+	display: inline-block;
+	vertical-align:middle;
+	background-color: #242424;
+	padding:0px 0px 0px 8px; margin: 0px;
+}
+#application div.component-container-label-border
+{
+	border-bottom-width: 2px;
+	border-bottom-color: #363636;
+	border-bottom-style: solid;
+}
+/* ------------------- EIKON.CSS END ---------------------------*/
+
+
+
+/* ------------------- nanoscroller.CSS START -------------------------*/
+.nano 
+{
+  position : relative;
+  width    : 50%;
+  height   : 100%;
+  overflow : hidden;
+}
+.nano .content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+  outline:0; //stop annoying dotted out-line in the table
+  padding: 2px;
+}
+.nano .pane         
+{ 
+    /*background: silver;*/
+    width: 6px; right:1px; 
+    /*visibility : hidden\9;*/  
+}
+.nano .pane .slider { background: silver; filter: alpha(opacity=50);}
+
+
+.nano > .pane 
+{
+  background : rgba(0,0,0,.25);
+  position   : absolute;
+  /*width      : 10px;*/
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+}
+.nano > .pane > .slider 
+{
+  background: rgba(0,0,0,.5);
+  position              : relative;
+  margin                : 0 1px;
+}
+.nano:hover > .pane, .pane.active 
+{
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+}
+
+/* ------------------- nanoscroller.CSS END ----------------------------*/

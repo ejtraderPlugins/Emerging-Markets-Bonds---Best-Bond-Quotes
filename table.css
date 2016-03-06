@@ -1,0 +1,331 @@
+
+/* ------------------- MYLIST / TABLE -------------------------------*/
+/* make margin between bottom and bottom of app container 8px*/
+
+#application .quotes
+{
+	/*border: 1px solid red;*/
+	border-collapse:collapse;
+	width:100%;
+	table-layout:fixed;
+	/*position: absolute;*/
+	
+}
+
+#application .quotes thead tr th
+{
+	overflow: visible;
+}
+
+#application .quotes thead tr 
+{	
+	background-color: #030303;
+	font-size: 11px; 
+	/*color: #ffffff;*/
+	color:#AF6225;
+	line-height: 18px;
+	margin: 0px;
+	white-space:nowrap;
+	border-bottom: 1px solid #303030;
+	/*display: none;*/
+}
+#application .quotes thead th img.sectorplusminus
+{
+
+	position: relative;
+	margin-right:5px;
+/*	left:-27px;*/
+	top:1px;
+	/*float:left;
+	top:40px;
+	left:10px;
+	margin-right:5px;*/
+
+}
+/*#application .quotes .plusminus
+{
+	position: relative;
+	float:left;
+	top:4px;
+	margin-right:5px;
+}*/
+#application .quotes .noimage
+{
+	position: relative;
+	float:left;
+	top:4px;
+	margin-right:5px;
+	
+}
+#application .quotes tbody tr.odd
+{
+	background-color: #191919; 
+}
+#application .quotes tbody tr.even
+{
+	background-color: #242424;
+}
+/*//tr.expand display:block didn't work with chrome*/
+/*#application .quotes tbody tr.expand
+{
+	display:block;
+}*/
+#application .quotes tbody tr.collapse
+{
+	display:none;
+}
+
+#application .quotes tbody tr.sectorrow
+{
+/*		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2B2B2B', endColorstr= '#36363636',GradientType=0 );*/
+	background-color:#444444;
+	/*border-top:2px solid #000000;*/
+}
+#application .quotes tbody tr /*td*/ /*does taking off the td selector improve performance?*/
+{
+	font-size: 10px;
+	color: #cccccc;
+	margin: 0px;
+	line-height: 20px;
+	border-top:1px solid #303030;
+	overflow: hidden;
+	/*border: 1px solid #333;*/
+}
+#application .quotes tbody tr.flash
+{
+	background: #F07900;
+}
+#application .quotes tbody tr td.expired
+{
+	/*background: #47382A;*/
+	color:#646464;
+}
+/*
+
+/* Data cells */
+#application .quotes tbody tr td.name, #application .quotes thead tr th.name
+{
+	text-align:left;
+	padding-left: 8px;
+	white-space: nowrap;
+
+}
+#application .quotes tbody tr td span.clickname:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+}
+#application .quotes tbody tr td span.brkclick:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+	font-weight: bold;
+}
+#application .quotes tbody tr td.brokers
+{
+	cursor: pointer;
+}
+/*#application .quotes tbody tr td.depthcolspan, #application .quotes tbody tr.mdduplicatebr
+{
+	border: none;
+}*/
+
+
+#popMidRowContainer .quotes tbody tr td.brokers
+{
+	cursor: pointer;
+}
+
+/*#application .quotes tbody tr td span.clickname
+{
+	outline:1px solid blue;
+}*/
+
+
+
+#application .quotes tbody tr td.brokers, 
+#application .quotes tbody tr td.time, 
+#application .quotes tbody tr td.bid, 
+#application .quotes tbody tr td.size, 
+#application .quotes tbody tr td.ask,
+#application .quotes tbody tr td.trades
+{
+	text-align:center;
+	font-size: 11px;
+
+}
+
+#application .quotes tbody tr td.bzspread,
+#application .quotes tbody tr td.bduration,
+#application .quotes tbody tr td.byield
+{
+	font-size: 11px;
+	text-align: right;
+	padding-right: 3px;
+}
+
+#application .quotes tbody tr td.ayield,
+#application .quotes tbody tr td.aduration,
+#application .quotes tbody tr td.azspread
+{
+	font-size: 11px;
+	text-align: left;
+	padding-left: 3px;
+}
+
+#application .quotes tbody tr td.bid
+{
+	font-size: 11px;
+	font-weight: bold;
+	/*color: #214495;*/
+	/*color: #2c85a6;*/
+	text-align: right;
+	padding-right: 3px;
+}
+#application .quotes tbody tr td.ask
+{
+	font-size: 11px;
+	font-weight: bold;
+	/*color: #2c85a6;*/
+	text-align: left;
+	padding-left: 3px;
+}
+
+#application .quotes tbody tr td.hide
+{
+	display: none;
+}
+#application .quotes tbody tr td.flash
+{
+	color:#F7921E;
+}
+#application .quotes thead tr th.hide
+{
+	display: none;
+}
+
+/*----------------------- Fixed Header START -----------------------------*/
+
+#application .fixedheader
+{
+	border-collapse:collapse;
+	width:100.5%;
+	table-layout:fixed;
+	position: relative;
+	
+}
+#application .fixedheader thead tr
+{
+	border-bottom: 1px solid #303030;
+	background-color: #000000;
+	font-size: 11px; 
+	color: #ffffff;
+	line-height: 16px;
+	margin: 0px;
+	white-space:nowrap;
+	
+}
+#application .fixedheader thead tr th.bduration,
+#application .fixedheader thead tr th.bzspread,
+#application .fixedheader thead tr th.byield,
+#application .fixedheader thead tr th.bid
+{
+	text-align: right;
+	padding-right: 8px;
+}
+#application .fixedheader thead tr th.aduration,
+#application .fixedheader thead tr th.azspread,
+#application .fixedheader thead tr th.ayield,
+#application .fixedheader thead tr th.ask
+{
+		text-align: left;
+	padding-left: 8px;
+}
+#application .fixedheader thead tr th.hide
+{
+	display: none;
+}
+/*#application .quotes thead tr th, #application .quotesstatic thead tr th
+{
+	border: 1px solid red;	
+}*/
+/*----------------------- Fixed Header START -----------------------------*/
+/* Wing Dings*/
+/*#application .quotes td.name kbd { float:left; padding-right:5px; cursor:hand;font-family: Wingdings;  text-decoration:none; }
+#application .quotes td.name kbd.favnot { font-size:80%; padding-top:3px; padding-top:1px; color:gray; }
+#application .quotes td.name kbd.favsel { font-size:100%; padding-top:3px; padding-top:1px; color:darkorange; }	
+*/
+
+
+
+/* ------------ MARKET DEPTH -------------*/
+
+#application .quotes tbody tr .depthplusminus
+{
+	position: relative;
+	top:2px;
+	margin-right:5px;
+}
+#application .quotes .marketdepth
+{
+	/*border: 5px solid red;*/
+	border-collapse:collapse;
+	width:100%;
+	table-layout:fixed;
+	border: none;
+	
+
+}
+#application .quotes .marketdepthcolumnchange
+{
+	border-collapse:collapse;
+	width:100%;
+	table-layout:fixed;
+	display: inline-table;
+}
+#application .quotes .marketdepth tbody tr
+{
+	line-height: 17px;
+}
+/*#application .quotes .marketdepth tbody tr.top
+{
+	border-top:none;
+}*/
+#application .quotes .marketdepth.odd
+{
+	background-color: #191919;
+}
+#application .quotes .marketdepth.even
+{
+	background-color: #242424;
+}
+
+#application .quotes .marketdepth tbody tr td
+{
+	text-align:center;
+
+}
+/*#application .quotes .marketdepth tbody tr td.depthfirstcol
+{
+	border-top: 1px solid #242424;
+}*/
+#application .quotes .marketdepth tbody tr td.bid
+{
+		text-align: right;
+	padding-right: 8px;
+}
+#application .quotes .marketdepth tbody tr td.ask
+{
+	text-align: left;
+	padding-left: 8px;
+}
+#application .quotes tbody tr.mdduplicatebr
+{
+	border-top:none;
+}
+
+#application .quotes .marketdepth tbody tr td.moretrades:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+}

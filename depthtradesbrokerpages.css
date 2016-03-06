@@ -1,0 +1,139 @@
+#marketdepth, #trades, #brokerpagetable
+{
+	padding:0px; margin:0px;
+	background-color:white;
+	table-layout:fixed;
+	position: absolute;
+	width:280px;
+	border-collapse:collapse;	
+	z-index: 3;
+}
+#marketdepth.show, 
+#trades.show,
+#brokerpagetable.show 
+{
+	display:block;
+
+}
+
+#marketdepth.hideme, 
+#trades.hideme, 
+#brokerpagetable.hideme 
+{
+	display:none;
+}
+
+
+#brokerpagetable thead tr th.bpvalset {width: 8px; padding-right:8px;  text-align: right; font-family: Wingdings; font-size:10pt; padding-top:0px; color:darkorange; cursor:hand; }
+
+#brokerpagetitle {text-align: middle;}
+
+#marketdepth thead tr th, #trades thead tr th, #brokerpagetable thead tr th
+{
+	background-color: #e9e8e8;
+	font-size: 11px; 
+	color: #000000;
+	line-height: 20px;
+	border-bottom:1px solid #dcdcdc;
+	padding-right: 1px;
+	margin: 0px
+
+	border-top:1px solid #ffffff;
+}
+
+/* Functionality to flash a depth row in the total view depth/trades popup
+#trades tbody tr td.flash
+{
+	font-size: 20;
+	color: #178BD5;
+	font-weight: bold;
+}
+*/
+#marketdepth tbody tr.odd, #trades tbody tr.odd, #brokerpagetable tbody tr.odd
+{
+	background-color: #f9f9f9;
+}
+#marketdepth tbody tr.even, #trades tbody tr.even, #brokerpagetable tbody tr.even
+{
+	background-color: #f6f5f5;
+}
+
+#marketdepth tbody tr td, 
+#trades tbody tr td, 
+#brokerpagetable tbody tr td
+{
+	font-size: 10px;
+	color: #000000;
+	padding: 0px; margin: 0px;
+	line-height: 20px;
+	border-bottom:1px solid #e0e0e0;
+	overflow: hidden;
+	text-align:center;
+}
+#marketdepth tbody tr td.bbrokers:hover, 
+#marketdepth tbody tr td.abrokers:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+}
+
+#brokerarrowtop
+{
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid #e9e8e8; 	
+	border-right:6px solid transparent; 
+	border-left:6px solid transparent; 
+	z-index: 3;
+}
+#brokerarrowtop.hideme 
+{
+	display:none;
+}
+#brokerarrowtop.show
+{
+	display: inline-block;
+}
+
+#brokerarrowbottom
+{
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid #e9e8e8;
+	border-bottom: 6px solid transparent; 	
+	border-right:6px solid transparent; 
+	border-left:6px solid transparent; 	
+	z-index: 3;
+}
+#brokerarrowbottom.hideme 
+{
+	display:none;
+}
+#brokerarrowbottom.show
+{
+	display: inline-block;
+}
+#deptharrow
+{
+	position:relative;
+	left:-5px;
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent; 	
+	border-right:6px solid white; 
+}
+
+#moretrades:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+}
+#brokerpagetable pre
+{
+	padding: 0px;
+	margin: 0px;
+}

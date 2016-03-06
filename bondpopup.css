@@ -1,0 +1,197 @@
+
+/* --- APPLICATION CONTAINER ---*/
+#applicationPopUp
+{
+	width: 98%;
+	border: 1px solid #363636;
+	margin: 4px 0px 4px 0px;
+	position:fixed;   
+}
+#applicationPopUp div.component-container
+{
+	border: 2px solid #000000;
+	background-color: #242424;
+	padding: 1px 1px 1px 1px;
+	margin: 0px;
+}
+#applicationPopUp div.component-container-label
+{
+	font-size: 16px; color: #c8c7c7;
+	line-height:30px ;
+	display: inline-block;
+	vertical-align:middle;
+	background-color: #242424;
+	padding:0px 0px 0px 8px; margin: 0px;
+}
+#applicationPopUp div.component-container-label-border
+{
+	border-bottom-width: 1px;
+	border-bottom-color: #363636;
+	border-bottom-style: solid;
+}
+
+/*#applicationPopUp div.popLabel {text-align: center;font-size: 25px; color:#1b88ac; line-height:30px ;background-color: #121212;margin: 0px; padding:0px 0px 0px 8px;}*/
+
+#applicationPopUp div.containerlabel
+{
+	color: #FF9C00;
+	margin: 3px 4px 1px 5px;
+}
+
+
+
+/* --- TOP ROW BID/ASK/SIZE/ETC --- */
+
+#popTopRowContainer
+ {
+	height: 35px;
+	padding: 0px 0px 1px 0px;
+ }
+
+ #popTopRowContainer table
+ {
+ 	table-layout: fixed;
+ 	padding: 0px;margin: 0px;
+ 	height: 20px;
+ 	width:100%;
+ }
+#popTopRowContainer table td
+{
+	/*border: 1px solid red;  */
+ 	padding: 0px; margin: 0px;
+ 	position: relative;
+}
+#popTopRowContainer table td.flash  { color:#F7921E; }
+	 
+#BID 	{color: #FFFFFF; font-size: 25px; text-align: right;  	vertical-align: bottom; top:-1px; }
+#dash	{color: #F3F3F3; font-size: 15px; text-align: right; 	vertical-align: middle; top: 0px; left:2px;}
+#ASK	{color: #FFFFFF; font-size: 25px; text-align: left; 	vertical-align: bottom;	top:-1px; }
+
+#SZBID	{color: #B4B4B4; font-size: 15px; text-align: center;	vertical-align: middle; top: 3px;  	width: 40px; left:2px;}
+#SZASK 	{color: #B4B4B4; font-size: 15px; text-align: center;	vertical-align: middle; top: 3px;	width: 40px;}
+#TIMASK	{color: #B4B4B4; font-size: 10px; text-align: center;	vertical-align: bottom; top:-4px; 	width: 35px;}
+#TIMBID {color: #B4B4B4; font-size: 10px; text-align: center;	vertical-align: bottom; top:-4px; 	width: 35px;}
+
+#BRKBID	{color: #B4B4B4; font-size: 10px; text-align: center;		vertical-align: bottom; top: 0px;	width: 35px; cursor: pointer;}
+#BRKASK {color: #B4B4B4; font-size: 10px; text-align: center;	vertical-align: bottom; top:0px;	width: 35px; cursor: pointer;}
+
+#BRKBID span.brkclick:hover { color:#AF6225; font-weight: bold; cursor: pointer; }
+#BRKASK span.brkclick:hover { color:#AF6225; font-weight: bold; cursor: pointer; }
+
+/* --- TABLES - DEPTH AND TRADES --- */ 
+/* separate from table.css because only a subset of the rules are required */
+
+#popMidRowContainer .quotes
+{
+	border-collapse:collapse;
+	width:100%;
+	table-layout:fixed;	
+}
+#popMidRowContainer .quotes thead tr th 	{ overflow: visible; }
+#popMidRowContainer .quotes tbody tr.odd	{ background-color: #191919; }
+#popMidRowContainer .quotes tbody tr.even	{ background-color: #242424; }
+
+#popMidRowContainer .quotes tbody tr /*td*/ 
+{ /*does taking off the td selector improve performance?*/
+	font-size: 10px;
+	color: #cccccc;
+	margin: 0px;
+	line-height: 20px;
+	border-top:1px solid #303030;
+	overflow: hidden;
+}
+
+#popMidRowContainer .quotes tbody tr td
+{
+	text-align:center;
+	font-size: 11px;
+}
+#popMidRowContainer .quotes tbody tr td span.brkclick:hover
+{
+	color:#AF6225;
+	cursor: pointer;
+	font-weight: bold;
+}
+#popMidRowContainer .quotes tbody tr td.flash { color:#F7921E; }
+
+#popMidRowContainer .quotes thead tr 
+{
+	border-bottom: 1px solid #303030;
+	background-color: #000000;
+	font-size: 11px; 
+	color: #ffffff;
+	line-height: 16px;
+	margin: 0px;
+	white-space:nowrap;
+}
+
+
+#popTS
+{
+	/*border: 1px solid red;*/
+	width: 385px;
+	height: 268px;
+}
+#poptsnano
+{
+	/*border: 3px solid green;*/
+	width: 383px;
+	height: 268px;
+}
+#poptstableholder
+{
+	/*border: 1px solid blue;*/
+/*	width: 380px;
+	height: 268px;
+*/
+}
+
+
+
+/* --- Buttons --- */
+#popButtonContainer { background-color: #121212; height: 30px; }
+#linkBondView, #assignhotkey
+{
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 10px; margin-right: 10px;
+	float: right;
+	color: #CCCCCC;
+}
+#linkBondView:hover { color:#FF8000; text-decoration:none; cursor: pointer; }
+
+
+
+
+/* --------------------------- hot key drop down---------------------------  */
+#hotkeydropdown
+{
+	width: 95px; padding:0px;margin:0px;
+	position: relative; left: 5px ; top:-170px;	
+	list-style: none;
+	border-left: 1px solid #000000; border-top: 1px solid #000000;border-right: 1px solid #000000;
+	background: #121212;
+	z-index: 999;	
+}
+#hotkeydropdown.hideme { display:none; }
+#hotkeyanchor:hover {color:#FF8000; text-decoration:none; cursor: pointer;}
+#hotkeydropdown li 
+{
+	font-weight:bold; font-size: 14px;
+	border-top: 1px solid #191919;
+	height:25px;
+	padding-bottom:4px;	
+}
+#hotkeydropdown li div.hotkeyli
+{
+	padding-left: 5px;
+	display: inline-block;
+	color: #ffffff;	
+	padding-top:5px;
+	font-weight:bold;
+	font-size: 14px;
+	width: 60px;
+}
+#hotkeydropdown li kbd {  padding-left:4px;  padding-right:3px; cursor:hand;font-family: Wingdings;  text-decoration:none;}
+#hotkeydropdown li kbd.hkdot.hkfavnot { font-size:80%; padding-top:9px; color:gray; }
+#hotkeydropdown li kbd.hkdot.hkfavsel { font-size:100%; padding-top:8px; color:darkorange; }	

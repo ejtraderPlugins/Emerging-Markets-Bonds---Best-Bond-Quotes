@@ -1,0 +1,825 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8">
+
+		<!-- <link rel="stylesheet" href="eikon.css" type="text/css" />  -->
+		<!-- <link rel="stylesheet" href="table.css" type="text/css" />  -->
+		<!-- <link rel="stylesheet" href="nanoscroller.css">  -->
+		<!--<script type="text/javascript" src="jquery.nanoscroller.min.js"></script>-->
+
+		<link rel="stylesheet" href="depthtradesbrokerpages.css"> 
+		<link rel="stylesheet" href="bondpopup.css" type="text/css" />
+		<link rel="stylesheet" href="shared.css" type="text/css" />
+
+		<script type="text/javascript" src="jquery-1.7.js"></script>
+		
+
+		<style type="text/css">
+			#menucloser
+			{
+				position: absolute;
+				height:100%;  
+				width:100%; 
+			}
+			#menucloser.sendtoback
+			{
+				z-index:-99;
+			}
+			#menucloser.bringtofront
+			{
+				z-index:2;	
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div id="test">test</div> -->
+		<!--Modal Popup START-->
+		<div id="applicationPopUp"> 
+
+				<div class="component-container"> <!-- black border -->
+					<div id="popuplabel" class="component-container-label">
+						
+					</div>
+					<div class="component-container-label-border"></div> 
+					<div class="popContent">
+						<div id="popTopRowContainer">
+							<table>
+								<tr>
+									<td id="BRKBID">&nbsp;</td>
+									<td id="SZBID" rowspan="2">&nbsp;</td>
+									<td id="BID" rowspan="2">&nbsp;</td>
+									<td id="dash" width="10px" rowspan="2">-</td>
+									<td id="ASK" rowspan="2">&nbsp;</td>
+									<td id="SZASK" rowspan="2">&nbsp;</td>
+									<td id="BRKASK">&nbsp;</td>
+								</tr>
+								<tr>
+									<td id="TIMBID">&nbsp;</td>
+									<td id="TIMASK">&nbsp;</td>
+								</tr>
+							</table>
+ 						</div>
+						<div class="component-container-label-border"></div>
+						<div class="containerlabel">DEPTH</div>
+						<div id="popMidRowContainer">
+							<div id="popMD">
+								<table class="quotes">
+										<thead>
+											<tr>
+												<th>Time</th>
+												<th>C</th>
+												<th>Size</th>
+												<th>Bid</th>
+												<th>Ask</th>
+												<th>Size</th>
+												<th>C</th>
+												<th>Time</th>
+											</tr>
+										</thead>
+										<col width=30>
+										<col width=20>
+										<col width=30>
+										<col width=80>
+										<col width=80>
+										<col width=30>
+										<col width=20>
+										<col width=30>
+										<tr class="odd">
+											<TD id="TIMBID1" class="time">&nbsp;</TD>
+											<TD id="BRKBID1" class="brokers">&nbsp;</TD>
+											<TD id="SZBID1" class="size">&nbsp;</TD>
+											<TD id="BID1" class="bid">&nbsp;</TD>
+											<TD id="ASK1" class="ask">&nbsp;</TD>
+											<TD id="SZASK1" class="size">&nbsp;</TD>
+											<TD id="BRKASK1" class="brokers">&nbsp;</TD>
+											<TD id="TIMASK1" class="time">&nbsp;</TD>
+										</tr>
+										<tr class="even">
+											<TD id="TIMBID2" class="time">&nbsp;</TD>
+											<TD id="BRKBID2" class="brokers">&nbsp;</TD>
+											<TD id="SZBID2" class="size">&nbsp;</TD>
+											<TD id="BID2" class="bid">&nbsp;</TD>
+											<TD id="ASK2" class="ask">&nbsp;</TD>
+											<TD id="SZASK2" class="size">&nbsp;</TD>
+											<TD id="BRKASK2" class="brokers">&nbsp;</TD>
+											<TD id="TIMASK2" class="time">&nbsp;</TD>
+										</tr>
+										<tr class="odd">
+											<TD id="TIMBID3" class="time">&nbsp;</TD>
+											<TD id="BRKBID3" class="brokers">&nbsp;</TD>
+											<TD id="SZBID3" class="size">&nbsp;</TD>
+											<TD id="BID3" class="bid">&nbsp;</TD>
+											<TD id="ASK3" class="ask">&nbsp;</TD>
+											<TD id="SZASK3" class="size">&nbsp;</TD>
+											<TD id="BRKASK3" class="brokers">&nbsp;</TD>
+											<TD id="TIMASK3" class="time">&nbsp;</TD>
+										</tr>
+										<tr class="even">
+											<TD id="TIMBID4" class="time">&nbsp;</TD>
+											<TD id="BRKBID4" class="brokers">&nbsp;</TD>
+											<TD id="SZBID4" class="size">&nbsp;</TD>
+											<TD id="BID4" class="bid">&nbsp;</TD>
+											<TD id="ASK4" class="ask">&nbsp;</TD>
+											<TD id="SZASK4" class="size">&nbsp;</TD>
+											<TD id="BRKASK4" class="brokers">&nbsp;</TD>
+											<TD id="TIMASK4" class="time">&nbsp;</TD>
+										</tr>
+										<tr class="odd">
+											<TD id="TIMBID5" class="time">&nbsp;</TD>
+											<TD id="BRKBID5" class="brokers">&nbsp;</TD>
+											<TD id="SZBID5" class="size">&nbsp;</TD>
+											<TD id="BID5" class="bid">&nbsp;</TD>
+											<TD id="ASK5" class="ask">&nbsp;</TD>
+											<TD id="SZASK5" class="size">&nbsp;</TD>
+											<TD id="BRKASK5" class="brokers">&nbsp;</TD>
+											<TD id="TIMASK5" class="time">&nbsp;</TD>
+										</tr>
+								</table>
+							</div>
+							<div class="component-container-label-border"></div>
+							<div class="containerlabel">TRADES</div>
+							<div id="popTS">
+								<div id="" class="nano">
+									<div id="" class="content">
+										<table id="popTSTable" class="quotes">
+											<thead>
+												<tr>
+													<th>Time</th>
+													<th>C</th>
+													<th>Px</th>
+													<th>Size</th>
+													<th>Dir.</th>
+												</tr>
+											</thead>
+											<col width=30>
+											<col width=20>
+											<col width=60>
+											<col width=50>
+											<col width=30>
+											<tbody>
+												<tr></tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="component-container-label-border"></div>
+						<div id="popButtonContainer">
+							<div id="linkBondView">
+								Go to Bond View
+							</div>
+							<div id="assignhotkey">
+								<a id="hotkeyanchor">Assign Hot Key</a>
+								
+								<ul id="hotkeydropdown" class="hideme" >
+								 	<li><div class="hotkeyli">HotKey 5</div><KBD id="hk5" class="hkdot hkfavnot">&#161;</KBD></li>
+								 	<li><div class="hotkeyli">HotKey 4</div><KBD id="hk4" class="hkdot hkfavnot">&#161;</KBD></li>
+								 	<li><div class="hotkeyli">HotKey 3</div><KBD id="hk3" class="hkdot hkfavnot">&#161;</KBD></li>
+								 	<li><div class="hotkeyli">HotKey 2</div><KBD id="hk2" class="hkdot hkfavnot">&#161;</KBD></li>
+								 	<li><div class="hotkeyli">HotKey 1</div><KBD id="hk1" class="hkdot hkfavnot">&#161;</KBD></li>	
+								</ul>
+								
+							</div>
+						</div>
+					</div>
+				</div> 
+		</div>
+		<!-- <div id="backgroundPopup"></div>  -->
+		<!--Modal Popup END-->
+
+		<div id="brokerpage">
+<!-- 			<div id="brokerarrowtop" class="hideme"></div>
+			<div id="brokerarrowbottom" class="hideme"></div>
+			<table id="brokerpagetable" class="hideme">
+				<thead>
+					<tr>
+						<th id="brokerpagetitle">Raw Data </th>
+						<th id="tradesrawdatatoggle" class="bpvalset"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  class="odd">
+						<td colspan="2" id="BRKPG1"><pre>                                        </pre></td>
+					</tr>
+					<tr class="even">
+						<td colspan="2" id="BRKPG2"><pre>                                        </pre></td>
+					</tr>
+					<tr class="odd">
+						<td colspan="2" id="BRKPG3"><pre>                                        </pre></td>
+					</tr>
+					<tr class="even">
+						<td colspan="2" id="BRKPG4"><pre>                                        </pre></td>
+					</tr>
+					<tr class="odd">
+						<td colspan="2" id="BRKPG5"><pre>                                        </pre></td>
+					</tr>
+					<tr class="even">
+						<td colspan="2" id="BRKPG6"><pre>                                        </pre></td>
+					</tr>
+					<tr class="odd">
+						<td colspan="2" id="BRKPG7"><pre>                                        </pre></td>
+					</tr>
+					<tr class="even">
+						<td colspan="2" id="BRKPG8"><pre>                                        </pre></td>
+					</tr>
+					<tr class="odd">
+						<td colspan="2" id="BRKPG9"><pre>                                        </pre></td>
+					</tr>
+					<tr class="even">
+						<td colspan="2" id="BRKPG10"><pre>                                        </pre></td>
+					</tr>
+				</tbody>
+			</table> -->
+		</div>
+		<div id="menucloser" class="sendtoback"></div>
+		<script type="text/javascript">
+
+
+			// ------------------------------- Initialise Start ----------------------------------------
+
+			var refBook;
+			var refPricer;
+			var cache;
+			var popupBondID;
+			var symbolName;
+			var resetNanoScroller;
+			var rawDataShowing; // boolean used to see if raw data table is currently displayed or not
+
+			function _hookBookPopup (myBookRef,symbolID,symbolNm) 
+			{
+				
+				refBook = myBookRef; 
+				cache 	= new Object();
+				popupBondID = symbolID;
+				symbolName = symbolNm;
+				resetNanoScroller = true;
+				resetNanoWindowSize();
+
+				document.getElementById("popuplabel").innerHTML = symbolName;
+			}
+
+			// ------------------------------- Initialise End ----------------------------------------
+
+
+			// -------------------------- API Definition START ------------------------------------
+			document.depthUpdatePopup 	 = _depthUpdatePopup;
+			document.tradeUpdatePopup 	 = _tradeUpdatePopup;
+			document.dataUpdatePopup  	 = _dataUpdatePopup;
+			document.hookBookPopup 	  	 = _hookBookPopup;
+			document.updateBrokerPageRow = _updateBrokerPageRow;
+			document.writeBrokerName     = _writeBrokerName;
+			// -------------------------- API Definition END --------------------------------------
+
+
+
+			// ----------------- Event Handler Start ---------------------------------
+
+			if (navigator.appName == "Microsoft Internet Explorer")
+			{
+				document.attachEvent("onclick", createDocEvents);
+
+				function createDocEvents (event)
+				{
+					var target = event.srcElement;
+
+					if(target.id == "menucloser")
+					{ hideBrokerRawPage(); return false; }
+
+					if(target.id == "hotkeyanchor")
+					{	toggleHotKeyDropDown();return false;}
+
+					if(target.className.search("hkfavnot") != -1 || target.className.search("hkfavsel") != -1)
+					{	selectHotKey(target); return false; }
+
+					if(target.className.search("brkclick") != -1)
+					{
+						toggleBrokerPages(target);
+						return false;
+					}
+				
+				}
+
+			}
+
+			function toggleHotKeyDropDown()
+			{
+				var elem = document.getElementById("hotkeydropdown");
+				if(elem.className == "hideme")
+				{
+					var $hklist = $("#hotkeydropdown");
+
+					//clear the hot key drop down, because it should behave like a radio button
+					$hklist.find(".hkdot").each(function(index)
+					{ //do radio button functionality					
+						$(this).html("&#161;");	
+						$(this).attr("class", "hkdot hkfavnot");
+					});	
+
+					//show the hotkey dropdown
+					elem.className = "";
+				}
+				else
+					elem.className = "hideme";
+					
+				//var menucloser = document.getElementById("menucloser");
+				//menucloser.className = "bringtofront";
+			}
+			function selectHotKey(target)
+			{
+
+				target.innerHTML = '&#108;';
+				target.className = 'hkdot hkfavsel';
+
+				var symbolname = document.getElementById("popuplabel").innerHTML;
+				
+				if(target.id == "hk1")
+				{
+					// document.getElementById("button1").innerHTML = symbolname;
+					// hotkey1SymbolAndName = popupBondID + ";" + symbolname;
+					//refBook("1",popupBondID,symbolName);
+					alert("Call vba functin, which in turn calls setHotKeyConfig() in full viewpassing: " + "1," + popupBondID +"," + symbolName)
+				}
+				else if(target.id == "hk2")
+				{
+					// document.getElementById("button2").innerHTML = symbolname;
+					// hotkey2SymbolAndName = popupBondID + ";" + symbolname;	
+					//refBook("2",popupBondID,symbolName);
+					alert("Call vba functin, which in turn calls setHotKeyConfig() in full viewpassing: " + "2," + popupBondID +"," + symbolName)
+
+				}
+				else if(target.id == "hk3")
+				{
+					// document.getElementById("button3").innerHTML = symbolname;
+					// hotkey3SymbolAndName = popupBondID + ";" + symbolname;	
+					//refBook("3",popupBondID,symbolName);
+					alert("Call vba functin, which in turn calls setHotKeyConfig() in full viewpassing: " + "3," + popupBondID +"," + symbolName)
+
+				}
+				else if(target.id == "hk4")
+				{
+					// document.getElementById("button4").innerHTML = symbolname;
+					// hotkey4SymbolAndName = popupBondID + ";" + symbolname;	
+					//refBook("4",popupBondID,symbolName);
+					alert("Call vba functin, which in turn calls setHotKeyConfig() in full viewpassing: " + "4," + popupBondID +"," + symbolName)
+
+				}
+				else if(target.id == "hk5")
+				{
+					// document.getElementById("button5").innerHTML = symbolname;
+					// hotkey5SymbolAndName = popupBondID + ";" + symbolname;	
+					//refBook("5",popupBondID,symbolName);
+					alert("Call vba functin, which in turn calls setHotKeyConfig() in full viewpassing: " + "5," + popupBondID +"," + symbolName)
+
+				}
+
+				window.setTimeout(function(){document.getElementById("hotkeydropdown").className = "hideme"},200);
+			}
+			// ------------------------------- Event Handler End -----------------------------------------------
+
+
+
+			// ------------------------------- Floating Broker Pages START -----------------------------------
+			function createBrokerPage()
+			{
+				var rowTemplate = [];
+				var k 			= 0;
+				rowTemplate[k++] = '<div id="brokerarrowtop" class="hideme"></div><div id="brokerarrowbottom" class="hideme"></div><table id="brokerpagetable" class="hideme">';
+				rowTemplate[k++] = '<thead><tr><th id="brokerpagetitle">Raw Data </th><th id="tradesrawdatatoggle" class="bpvalset"></th></tr></thead><tbody>';
+				rowTemplate[k++] = '<tr class="odd"><td colspan="2" id="BRKPG1"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="even"><td colspan="2" id="BRKPG2"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="odd"><td colspan="2" id="BRKPG3"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="even"><td colspan="2" id="BRKPG4"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="odd"><td colspan="2" id="BRKPG5"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="even"><td colspan="2" id="BRKPG6"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="odd"><td colspan="2" id="BRKPG7"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="even"><td colspan="2" id="BRKPG8"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="odd"><td colspan="2" id="BRKPG9"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '<tr class="even"><td colspan="2" id="BRKPG10"><pre>                                        </pre></td></tr>';
+				rowTemplate[k++] = '</tbody></table>';
+
+				document.getElementById("brokerpage").innerHTML = rowTemplate.join("");
+			}
+			function _updateBrokerPageRow(val)
+			{
+				var valtemp = val.split(";");
+				document.getElementById(valtemp[0]).innerHTML = valtemp[1];
+			}
+			function _writeBrokerName(val)
+			{
+				document.getElementById("brokerpagetitle").innerHTML = val;
+			}
+
+			function toggleBrokerPages(target)
+			{
+				if(rawDataShowing == true)
+				{
+					document.getElementById("brokerpagetable").className 	= "hideme";
+					document.getElementById("brokerarrowtop").className 	= "hideme";
+					document.getElementById("brokerarrowbottom").className  = "hideme";
+					rawDataShowing = false;
+					//refPricer.stopRawData();
+					return false;
+				}
+
+
+				createBrokerPage();
+				//hideRightClickMenuAndDepthTrades();
+
+				//deactivate nanoscroller, otherwise trades/depth popup is scrollable
+				//$("#application .nano").nanoScroller({stop:true});
+				//handleNanoScrollerEventBug();
+
+				document.getElementById("tradesrawdatatoggle").innerHTML = "";
+
+				var $brokerpagetable = $(document.getElementById("brokerpagetable"));
+				var $brokerarrowtop  = $(document.getElementById("brokerarrowtop"));
+				var $brokerarrowbottom = $(document.getElementById("brokerarrowbottom"));
+
+				//caculation that determines if the popup overlaps the bottom of the viewport
+				$doc        	= $(document);
+				$win        	= $(window);
+				var brktableH 	= $brokerpagetable.outerHeight();
+				var dTop    	= ($(target).offset().top - 25) - $doc.scrollTop();
+				var dBottom 	= $win.height() - dTop -brktableH -30; /* take trades.height out of equation if moving back to side by side*/
+
+				var $tarLocal 	=  $(target).offset();
+
+
+				//refPricer.getRawDataFor(target.innerHTML, "start");
+				//_updateBrokerPageRow("BRKPG1;<pre>PDVSA   17N         / 88.50       x 2   </pre>");
+				//_writeBrokerName("TRADITION");
+
+
+				if (dBottom < 0 ) 
+				{// paint it above
+					
+					if(target.parentNode.id.search("ASK") != -1)
+					{//paint it close to the middle, relative to the ask
+
+						$brokerpagetable[0].style.top = $(target).offset().top - brktableH - 5; //top of the mdtable should be pushed down
+						$brokerpagetable[0].style.left = $(target).offset().left - 240;
+
+						$brokerarrowbottom[0].style.top = $(target).offset().top-5; 
+						$brokerarrowbottom[0].style.left = $(target).offset().left-3;
+					}
+					else
+					{
+						$brokerpagetable[0].style.top = $(target).offset().top - brktableH - 5; //top of the mdtable should be pushed down
+						$brokerpagetable[0].style.left = $(target).offset().left - 30;
+
+						$brokerarrowbottom[0].style.top = $(target).offset().top - 5; 
+						$brokerarrowbottom[0].style.left = $(target).offset().left -3 ;
+					}
+
+					$brokerpagetable[0].className   = "show";
+					$brokerarrowtop[0].className    = "hideme";
+					$brokerarrowbottom[0].className = "show";
+				}
+				else
+				{//paint it below
+
+
+					if(target.parentNode.id.search("ASK") != -1)
+					{//paint it close to the middle, relative to the ask
+						
+						$brokerpagetable[0].style.top = $(target).offset().top + 20; //top of the mdtable should be pushed down
+						$brokerpagetable[0].style.left = $(target).offset().left - 265;
+
+						$brokerarrowtop[0].style.top = $(target).offset().top+8; 
+						$brokerarrowtop[0].style.left = $(target).offset().left-2;
+						
+					}
+					else
+					{
+						$brokerpagetable[0].style.top = $(target).offset().top +20; //top of the mdtable should be pushed down
+						//$brokerpagetable[0].style.left = $(target).offset().left - 30;
+						$brokerpagetable[0].style.left = $(target).offset().left - 10;
+
+						$brokerarrowtop[0].style.top = $(target).offset().top + 8; 
+						//$brokerarrowtop[0].style.left = $(target).offset().left-2;
+						$brokerarrowtop[0].style.left = $(target).offset().left-2;
+					}
+					$brokerpagetable[0].className   = "show";
+					$brokerarrowbottom[0].className = "hideme";
+					$brokerarrowtop[0].className    = "show";
+
+				}
+				
+				var menucloser       = document.getElementById("menucloser");
+				menucloser.className = "bringtofront";
+				rawDataShowing       = true;
+				
+			}
+			function hideBrokerRawPage()
+			{
+				if(rawDataShowing == true)
+				{
+					document.getElementById("brokerpagetable").className 	= "hideme";
+					document.getElementById("brokerarrowtop").className 	= "hideme";
+					document.getElementById("brokerarrowbottom").className  = "hideme";
+					rawDataShowing = false;
+					//refPricer.stopRawData();
+				}
+			}
+			// ------------------------------- Floating Broker Pages END --------------------------------
+
+			function _dataUpdatePopup(px, size, brk, time)
+			{
+				var localCache 		= cache; 
+
+				var bidpx = px.split(";");
+				
+				if(!localCache[bidpx[0]])
+					localCache[bidpx[0]] = document.getElementById(bidpx[0]);
+
+				localCache[bidpx[0]].innerHTML = bidpx[1];
+
+
+				var bidbrokers = brk.split(";");
+
+				if(!localCache[bidbrokers[0]])
+					localCache[bidbrokers[0]] = document.getElementById(bidbrokers[0]);
+
+				//localCache[bidbrokers[0]].innerHTML = bidbrokers[1];
+
+				//clickable broker codes
+				var brklen  = bidbrokers[1].length;
+				var brkcdes = bidbrokers[1];
+				var brkhtml = "<span class='brkclick'>#brk</span>";
+				var brkouput ="";
+				for(var i=0;i<brklen;i++)
+				{
+					brkouput = brkouput + brkhtml.replace("#brk", brkcdes[i]);
+				}
+
+				localCache[bidbrokers[0]].innerHTML = brkouput;
+
+
+				var bidsizey = size.split(";");
+
+				if(!localCache[bidsizey[0]])
+					localCache[bidsizey[0]] = document.getElementById(bidsizey[0]);
+
+				localCache[bidsizey[0]].innerHTML = bidsizey[1];
+
+
+				var timey = time.split(";")
+				if(!localCache[timey[0]])
+					localCache[timey[0]] = document.getElementById(timey[0]);
+
+				localCache[timey[0]].innerHTML = timey[1];
+
+
+				if(localCache[bidpx[0]].className.substring(0,3) == "ask")
+				{
+					localCache[bidpx[0]].className 		= "popTopRowPx flash";
+					localCache[bidsizey[0]].className 	= "popTopRowSize flash";
+					localCache[bidbrokers[0]].className = "popTopRowBrk flash";
+					localCache[timey[0]].className 		= "popTopRowtime flash";
+					window.setTimeout(function()
+					{
+						localCache[bidpx[0]].className 		="popTopRowPx";
+						localCache[bidsizey[0]].className 	="popTopRowSize";
+						localCache[bidbrokers[0]].className ="popTopRowBrk";
+						localCache[timey[0]].className 		="popTopRowtime";
+					}, 5000)
+				}
+				else
+				{
+					localCache[bidpx[0]].className = "popTopRowPx flash"
+					localCache[bidsizey[0]].className 	= "popTopRowSize flash";
+					localCache[bidbrokers[0]].className = "popTopRowBrk flash";
+					localCache[timey[0]].className 		= "popTopRowtime flash";
+					window.setTimeout(function()
+					{
+						localCache[bidpx[0]].className="popTopRowPx";
+						localCache[bidsizey[0]].className 	="popTopRowSize";
+						localCache[bidbrokers[0]].className ="popTopRowBrk";
+						localCache[timey[0]].className 		="popTopRowtime";
+
+					}, 5000)		
+				}
+
+			}
+
+			function _tradeUpdatePopup(px,sz,brk,tim,dir)
+			{
+				var rowTemplate = [];
+				var k 			= 0;
+				rowTemplate[k++] = '<tr class="#oddEven">';					//[0]
+				rowTemplate[k++] = '<td class="time">#time</td>';			//[1]
+				rowTemplate[k++] = '<td class="brokers">#brk</td>';		//[2]
+				rowTemplate[k++] = '<td class="bid">#px</td>';			//[3]
+				rowTemplate[k++] = '<td class="size">#sz</td>';			//[4]
+				rowTemplate[k++] = '<td class="hittake">#dir</td></tr>';	//[5]
+
+				
+				var $firstRow = $("#popTSTable tbody tr:first");
+				if ($firstRow[0].className == "even")
+					rowTemplate[0] = rowTemplate[0].replace('#oddEven',"odd");
+				else
+					rowTemplate[0] = rowTemplate[0].replace('#oddEven',"even");	
+
+
+				rowTemplate[1] = rowTemplate[1].replace('#time',tim);
+				rowTemplate[2] = rowTemplate[2].replace('#brk',brk);
+				rowTemplate[3] = rowTemplate[3].replace('#px',px);
+				rowTemplate[4] = rowTemplate[4].replace('#sz',sz);
+				rowTemplate[5] = rowTemplate[5].replace('#dir',dir);
+
+				rowTemplate = rowTemplate.join("");
+				$firstRow.before(rowTemplate);
+
+				if (resetNanoScroller == true)  
+				{//only reset the nanoscroller every 10 seconds. Each 10 seconds is triggered only off a new tradeupdate (approx.)
+					resetNanoScroller = false;
+					resetNanoOnTimer();		
+				}
+
+				//$("#popTS .nano").nanoScroller();
+
+			}
+			function resetNanoOnTimer()
+			{
+				window.setTimeout(function(){$("#popTS .nano").nanoScroller();resetNanoScroller = true;},10000);	
+			}
+
+			function _depthUpdatePopup(px, size, brk, time)
+			{
+				var localCache 		= cache; 
+
+				var bidpx = px.split(";");
+				
+				if(!localCache[bidpx[0]])
+					localCache[bidpx[0]] = document.getElementById(bidpx[0]);
+
+				localCache[bidpx[0]].innerHTML = bidpx[1];
+
+
+				var bidbrokers = brk.split(";");
+
+				if(!localCache[bidbrokers[0]])
+					localCache[bidbrokers[0]] = document.getElementById(bidbrokers[0]);
+
+				//localCache[bidbrokers[0]].innerHTML = bidbrokers[1];
+
+				//clickable broker codes
+				var brklen  = bidbrokers[1].length;
+				var brkcdes = bidbrokers[1];
+				var brkhtml = "<span class='brkclick'>#brk</span>";
+				var brkouput ="";
+				for(var i=0;i<brklen;i++)
+				{
+					brkouput = brkouput + brkhtml.replace("#brk", brkcdes[i]);
+				}
+
+				localCache[bidbrokers[0]].innerHTML = brkouput;
+
+
+				var bidsizey = size.split(";");
+
+				if(!localCache[bidsizey[0]])
+					localCache[bidsizey[0]] = document.getElementById(bidsizey[0]);
+
+				localCache[bidsizey[0]].innerHTML = bidsizey[1];
+
+
+				var timey = time.split(";")
+				if(!localCache[timey[0]])
+					localCache[timey[0]] = document.getElementById(timey[0]);
+
+				localCache[timey[0]].innerHTML = timey[1];
+
+
+				if(localCache[bidpx[0]].className.substring(0,3) == "ask")
+				{
+					localCache[bidpx[0]].className 		= "ask flash";
+					localCache[bidsizey[0]].className 	= "size flash";
+					localCache[bidbrokers[0]].className = "brokers flash";
+					localCache[timey[0]].className 		= "time flash";
+					window.setTimeout(function()
+					{
+						localCache[bidpx[0]].className 		="ask";
+						localCache[bidsizey[0]].className 	="size";
+						localCache[bidbrokers[0]].className ="brokers";
+						localCache[timey[0]].className 		="time";
+					}, 5000)
+				}
+				else
+				{
+					localCache[bidpx[0]].className = "bid flash"
+					localCache[bidsizey[0]].className 	= "size flash";
+					localCache[bidbrokers[0]].className = "brokers flash";
+					localCache[timey[0]].className 		= "time flash";
+					window.setTimeout(function()
+					{
+						localCache[bidpx[0]].className="bid";
+						localCache[bidsizey[0]].className 	="size";
+						localCache[bidbrokers[0]].className ="brokers";
+						localCache[timey[0]].className 		="time";
+
+					}, 5000)		
+				}
+
+
+			}
+
+
+
+
+
+			// -------------------------- NanoScroller START ----------------------------------------------
+			(function($,sr){
+			  var debounce = function (func, threshold, execAsap) {
+			      var timeout;
+			 
+			      return function debounced () {
+			          var obj = this, args = arguments;
+			          function delayed () {
+			              if (!execAsap)
+			                  func.apply(obj, args);
+			              timeout = null; 
+			          };
+			 
+			          if (timeout)
+			              clearTimeout(timeout);
+			          else if (execAsap)
+			              func.apply(obj, args);
+			 
+			          timeout = setTimeout(delayed, threshold || 100); 
+			      };
+			  }
+					
+				jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+				 
+			})(jQuery,'smartresize');
+
+			$(window).smartresize(function()
+			{
+				resetNanoWindowSize()
+			});
+
+			function resetNanoWindowSize()
+			{
+				var viewportWidth = $(window).width()-15;
+				var viewportHeight = 275;
+
+				//alert(viewportWidth + " " + viewportHeight)
+
+				$("#popTS").find(".nano").css(
+				{
+					width:viewportWidth,
+					height:viewportHeight
+				});
+				
+
+				// $("#application .content").css(
+				// {
+				//  	width:viewportWidth+20,
+				//   	height:viewportHeight+140
+				// })
+				
+				$("#popTS .nano").nanoScroller();
+				
+			}
+			// -------------------------- NanoScroller END ----------------------------------------------
+
+
+		 // 		var test = new Object();
+		 // 		_hookBookPopup(test,"123456","BODEN 99");  
+			
+			//  _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","dir");
+			// _tradeUpdatePopup("px","sz","brk","tim","sta");
+
+			// _depthUpdatePopup("BID1;44.55", "SZBID1;5", "BRKBID1;GF", "TIMBID1;14:00");
+			// _depthUpdatePopup("ASK5;44.55", "SZASK4;5", "BRKASK3;GF", "TIMASK1;14:00");
+			
+			// _dataUpdatePopup("BID;443.55", "SZBID;5", "BRKBID;GGF", "TIMBID;14:00:12");
+			// _dataUpdatePopup("ASK;44.55", "SZASK;53", "BRKASK;G", "TIMASK;14:00:14");
+
+			// $("#test").click(function()
+			// {
+			// 	refBook.addtrades();
+			// 	return false;
+			// });
+
+
+		</script>
+
+	</body>
+</html>

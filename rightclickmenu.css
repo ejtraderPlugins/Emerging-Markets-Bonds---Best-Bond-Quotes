@@ -1,0 +1,20 @@
+
+#rightclickmenu 
+{ 
+	display: none; 
+	position:absolute; 
+	/*z-index:999999999; top:-1000px;*/ 
+	border:1px solid silver; 
+	background-color:#191919; 
+}
+#rightclickmenu td { font-size:80%; border-bottom: 1px dotted silver; cursor:default; padding-right:4px;color:silver; }
+#rightclickmenu td.label { padding-left:7px; cursor:default; }
+#rightclickmenu td.valset { font-family: Wingdings; font-size:10pt; padding-top:2px;  color:darkorange; cursor:hand; }
+#rightclickmenu td.valnot { font-family: Wingdings; font-size:8pt; padding-top:2px; color:gray; cursor:hand; }
+#rightclicktable
+{
+	border-collapse: collapse;
+}
+#rightclicktable td.last{ border-bottom:none;}
+
+
